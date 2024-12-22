@@ -12,7 +12,6 @@ This project aims to develop an automated system for detecting faults in tires u
 - [Evaluation Metrics](#evaluation-metrics)
 - [Results](#results)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact Information](#contact-information)
 
 ## Introduction
