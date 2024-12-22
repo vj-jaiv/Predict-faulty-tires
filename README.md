@@ -61,6 +61,7 @@ To set up this project locally, follow these steps:
 
 1. Clone the repository:
 https://github.com/vj-jaiv/Predict-faulty-tires.git
+
 **Create a virtual environment**
 python -m venv venv
 source venv\Scripts\activate
