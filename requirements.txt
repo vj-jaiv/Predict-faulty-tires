@@ -1,0 +1,9 @@
+- **TensorFlow**: For building and training deep learning models.
+- **Keras**: High-level neural networks API, running on top of TensorFlow.
+- **Scikit-learn**: For traditional machine learning algorithms and evaluation metrics.
+- **Pandas**: For data manipulation and analysis.
+- **NumPy**: For numerical computations.
+- **Matplotlib**: For creating static visualizations.
+- **Seaborn**: For enhanced statistical data visualization.
+- **OpenCV**: For image processing tasks (if applicable).
+- **Keras Tuner**: For hyperparameter tuning of Keras models.
