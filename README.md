@@ -65,9 +65,11 @@ https://github.com/vj-jaiv/Predict-faulty-tires.git
 **Create a virtual environment**
 python -m venv venv
 source venv\Scripts\activate
+
 2. Install the required dependencies:
 
 pip install -r requirements.txt
+
 Below is a list of libraries included in `requirements.txt`:
 
 - **TensorFlow**: For building and training deep learning models.
@@ -79,6 +81,7 @@ Below is a list of libraries included in `requirements.txt`:
 - **Seaborn**: For enhanced statistical data visualization.
 - **OpenCV**: For image processing tasks (if applicable).
 - **Keras Tuner**: For hyperparameter tuning of Keras models.
+- 
 - **Verify Installation**:
    To ensure all dependencies are installed correctly, run:
   python -c "import tensorflow; print(tensorflow.version)"
