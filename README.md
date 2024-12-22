@@ -50,7 +50,6 @@ tire-fault-detection/
 │ ├── accuracy_plot.png
 │ └── confusion_matrix.png
 │
-├── Business Requirements Document
 ├── ppt
 ├── report
 ├── requirements.txt
@@ -81,7 +80,7 @@ Below is a list of libraries included in `requirements.txt`:
 - **Seaborn**: For enhanced statistical data visualization.
 - **OpenCV**: For image processing tasks (if applicable).
 - **Keras Tuner**: For hyperparameter tuning of Keras models.
-- 
+  
 - **Verify Installation**:
    To ensure all dependencies are installed correctly, run:
   python -c "import tensorflow; print(tensorflow.version)"
@@ -116,7 +115,7 @@ from tensorflow.keras.callbacks import ModelCheckpoint
 import keras_tuner as kt
 
 
-# In[29]:
+# In[2]:
 
 
 data = {
@@ -138,20 +137,20 @@ print("Loaded Data:")
 print(loaded_data)
 
 print(os.getcwd())
-with open('E:/tire-fault-detection/models/tire_fault_detection_model.pkl', 'wb') as f:
+with open('C:/Users/rmks2/Capstone Project/tire-fault-detection/models/tire_fault_detection_model.pkl', 'wb') as f:
     pickle.dump(data, f)
 
 
-# In[23]:
+# In[3]:
 
 
 # Paths to good and faulty tire images
-good_tire_path = 'E:/tire-fault-detection/dataset/raw/good'
-faulty_tire_path = 'E:/tire-fault-detection/dataset/raw/defective'
+good_tire_path = 'C:/Users/rmks2/Capstone Project/tire-fault-detection/dataset/raw/good'
+faulty_tire_path = 'C:/Users/rmks2/Capstone Project/tire-fault-detection/dataset/raw/defective'
 
 # Paths to save processed good and faulty tire images
-processed_good_tire_path = 'E:/tire-fault-detection/dataset/processed/good'
-processed_faulty_tire_path = 'E:/tire-fault-detection/dataset/processed/defective'
+processed_good_tire_path = 'C:/Users/rmks2/Capstone Project/tire-fault-detection/dataset/processed/good'
+processed_faulty_tire_path = 'C:/Users/rmks2/Capstone Project/tire-fault-detection/dataset/processed/defective'
 
 # Creating directories for processed images
 os.makedirs(processed_good_tire_path, exist_ok=True)
@@ -159,7 +158,7 @@ os.makedirs(processed_faulty_tire_path, exist_ok=True)
 
 
 
-# In[22]:
+# In[4]:
 
 
 # Data cleaning function
@@ -199,7 +198,7 @@ def load_and_clean_data(good_tire_path, faulty_tire_path):
 good_tires, faulty_tires = load_and_clean_data(good_tire_path, faulty_tire_path)
 
 
-# In[28]:
+# In[5]:
 
 
 # Displaying sample images of good and faulty tires
@@ -225,7 +224,7 @@ def display_samples(good_tires, faulty_tires):
 display_samples(good_tires, faulty_tires)
 
 
-# In[4]:
+# In[6]:
 
 
 # Creating an ImageDataGenerator for preprocessing the images with augmentation
@@ -239,12 +238,12 @@ train_datagen = ImageDataGenerator(
 )
 
 
-# In[5]:
+# In[7]:
 
 
 # Loading training and validation data using flow_from_directory
 train_generator = train_datagen.flow_from_directory(
-    directory='E:/tire-fault-detection/dataset/processed',  # Use processed data directory here
+    directory='C:/Users/rmks2/Capstone Project/tire-fault-detection/dataset/processed',  # Use processed data directory here
     target_size=(150, 150),
     batch_size=32,
     class_mode='binary',
@@ -252,7 +251,7 @@ train_generator = train_datagen.flow_from_directory(
 )
 
 validation_generator = train_datagen.flow_from_directory(
-    directory='E:/tire-fault-detection/dataset/processed',  # Use processed data directory here
+    directory='C:/Users/rmks2/Capstone Project/tire-fault-detection/dataset/processed',  # Use processed data directory here
     target_size=(150, 150),
     batch_size=32,
     class_mode='binary',
@@ -260,7 +259,7 @@ validation_generator = train_datagen.flow_from_directory(
 )
 
 
-# In[6]:
+# In[8]:
 
 
 # Defining the model creation function for Keras Tuner and Grid Search
@@ -283,7 +282,7 @@ def build_model(hp):
     return model
 
 
-# In[18]:
+# In[ ]:
 
 
 # Initializing the tuner for hyperparameter tuning using Keras Tuner
@@ -307,7 +306,7 @@ model = build_model(best_hps)
 history = model.fit(train_generator, validation_data=validation_generator, epochs=10)
 
 
-# In[27]:
+# In[ ]:
 
 
 # Plotting training and validation accuracy and loss.
@@ -334,7 +333,7 @@ plt.savefig('Training and Validation Loss.png')
 plt.show()
 
 
-# In[9]:
+# In[ ]:
 
 
 # Preparing to evaluate traditional models on flattened data.
@@ -351,7 +350,7 @@ X_train_flattened , X_test_flattened , y_train_flattened , y_test_flattened = tr
      random_state=42)
 
 
-# In[10]:
+# In[ ]:
 
 
 # Logistic Regression Model with evaluation metrics.
@@ -363,7 +362,7 @@ print(f"Test Accuracy (Logistic Regression): {accuracy_log_reg:.2f}")
 print(classification_report(y_test_flattened , y_pred_log_reg))
 
 
-# In[11]:
+# In[ ]:
 
 
 # Decision Tree Model with evaluation metrics.
@@ -375,7 +374,7 @@ print(f"Test Accuracy (Decision Tree): {accuracy_dt:.2f}")
 print(classification_report(y_test_flattened , y_pred_dt))
 
 
-# In[12]:
+# In[ ]:
 
 
 # Random Forest Model with evaluation metrics.
@@ -387,7 +386,7 @@ print(f"Test Accuracy (Random Forest): {accuracy_rf:.2f}")
 print(classification_report(y_test_flattened , y_pred_rf))
 
 
-# In[13]:
+# In[ ]:
 
 
 # Evaluate the best model on validation data 
@@ -395,7 +394,7 @@ val_loss , val_accuracy = model.evaluate(validation_generator)
 print(f'Validation Accuracy (Best Model): {val_accuracy:.4f}')
 
 
-# In[26]:
+# In[ ]:
 
 
 # Visualizing performance of each model using bar charts.
@@ -418,7 +417,7 @@ plt.savefig('model_performance_comparison.png')
 plt.show()
 
 
-# In[25]:
+# In[ ]:
 
 
 # Displaying confusion matrix for better understanding of misclassifications for Logistic Regression.
@@ -444,6 +443,27 @@ plt.xlabel('Predicted label')
 plt.tight_layout()
 plt.savefig('model_performance.png')
 plt.show()
+
+
+
+# In[ ]:
+
+
+
+For deployment using Flask and Gunicorn:
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Welcome to the Tire Fault Detection API!"
+
+if __name__ == '__main__':
+    app.run(debug=True) 
+
+gunicorn --bind 0.0.0.0:8000 app:app 
 
 
 You can also specify parameters such as batch size and number of epochs in the script.
