@@ -1,5 +1,6 @@
 # Tire Fault Detection Using Machine Learning
 
+
 ## Project Overview
 This project aims to develop an automated system for detecting faults in tires using machine learning techniques. By analyzing images of both good and defective tires, the system will enhance quality control processes in tire manufacturing, ensuring safety and reliability.
 
